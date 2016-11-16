@@ -28,10 +28,10 @@ var LoginPage = React.createClass({
               <form role="form" onSubmit={this.handleLogin} className="ng-pristine ng-valid"> 
                 <div className="form-content"> 
                   <div className="form-group"> 
-                    <input type="text" className="form-control input-underline input-lg" placeholder="Email" /> 
+                    <input type="text" className="form-control input-underline input-lg" placeholder="Email or User Name" id="emailOrUserName" />
                   </div> 
                   <div className="form-group"> 
-                    <input type="password" className="form-control input-underline input-lg" placeholder="Password" /> 
+                    <input type="password" className="form-control input-underline input-lg" placeholder="Password" id="password" />
                   </div> 
                 </div> 
                 <button type="submit" className="btn btn-white btn-outline btn-lg btn-rounded">Login</button> 
@@ -64,13 +64,40 @@ var LoginPage = React.createClass({
   },
 
   handleLogin: function(e){
-
     e.preventDefault();
-    this.props.history.pushState(null, '/dashboard/overview');
+
+    var emailOrUserName = $('#emailOrUserName').val();
+    var password = $('#password').val();
+
+    var emptyData = false;
+    if(emailOrUserName == '') {
+        //notify empty email or username
+
+        emptyData = true;
+    }
+    if(password == '') {
+        //notify empty password
+
+        emptyData = true;
+    }
+    var data;
+    if(!emptyData) {
+        data = {emailOrUserName : emailOrUserName, password : password};
+      $.ajax({
+        type: 'POST',
+        url: 'http://localhost:8080/users/login/' + emailOrUserName + '/' + password,
+        data: data
+      }).done(function(result) {
+            $('#emailOrUserName').val('');
+            $('#password').val('');
+            this.props.history.pushState(null, '/dashboard/overview');
+      }).fail(function(jqXHR, status) {
+            console.log('failed to login');
+            return false;
+      });
+    }
     
     // this.transitionTo('dashboard');
-
-    return false;
 
   }
 
