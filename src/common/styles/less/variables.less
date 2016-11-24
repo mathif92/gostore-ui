@@ -24,6 +24,7 @@
 @brand-info:            #5bc0de;
 @brand-warning:         #f0ad4e;
 @brand-danger:          #d9534f;
+@brand-link:            #ffffff;
 
 
 //== Scaffolding
@@ -36,9 +37,9 @@
 @text-color:            @gray-dark;
 
 //** Global textual link color.
-@link-color:            @brand-primary;
+@link-color:            @brand-link;
 //** Link hover color set via `darken()` function.
-@link-hover-color:      darken(@link-color, 15%);
+@link-hover-color:      @link-color;
 //** Link hover decoration.
 @link-hover-decoration: underline;
 
@@ -189,6 +190,17 @@
 @input-color:                    @gray;
 //** `<input>` border color
 @input-border:                   #ccc;
+
+//** White Screen styles
+//** `<input>` background color
+@input-bg-white:                       #fff;
+//** `<input disabled>` background color
+@input-bg-disabled-white:              @gray-lighter;
+
+//** Text color for `<input>`s
+@input-color-white:                    @brand-primary;
+//** `<input>` border color
+@input-border-white:                   @brand-primary;
 
 // TODO: Rename `@input-border-radius` to `@input-border-radius-base` in v4
 //** Default `.form-control` border radius

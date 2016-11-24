@@ -22,3 +22,28 @@
 	}
 
 }
+
+.input-underline-white-screen {
+	background: none;
+	border: none;
+	box-shadow: none;
+	border-bottom: 2px solid darken(@brand-primary, 10%);
+	color: darken(@brand-primary, 15%);
+	border-radius: 0;
+
+	&::-moz-placeholder {
+		color: @brand-primary;
+	}
+	&::-ms-input-placeholder {
+		color: @brand-primary;
+	}
+	&::-webkit-input-placeholder {
+		color: @brand-primary;
+	}
+
+	&:focus {
+		border-bottom: 2px solid @brand-primary;
+		box-shadow: none;
+	}
+
+}

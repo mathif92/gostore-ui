@@ -1,42 +1,49 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { createHashHistory, useBasename } from 'history';
-import { Router } from 'react-router';
+import {render} from 'react-dom';
+import {createHashHistory, useBasename} from 'history';
+import {Router} from 'react-router';
 import "./common/styles/app.less";
 import NProgress from 'nprogress';
 
-NProgress.configure({ showSpinner: false });
+NProgress.configure({showSpinner: true});
 
 const history = useBasename(createHashHistory)({
-   queryKey: false
+    queryKey: false
 })
 
 const rootRoute = {
-  path: '/',
-  component: require('./components/layouts/Base'),
-  indexRoute: {component: require('./components/layouts/Dashboard')},
-  childRoutes: [ 
-    {
-      component: require('./components/layouts/Dashboard'),
-      indexRoute: {component: require('./components/pages/dashboard/Overview')},
-      childRoutes: [
-        require('./components/pages/dashboard/Overview'),
-        require('./components/pages/dashboard/Reports')
-      ]
-    },
-    {
-      path: '/login',
-      component: require('./components/pages/Login'),
-      childRoutes: [
-      ]
-    }
-  ]
+    path: '/',
+    component: require('./components/layouts/Base'),
+    indexRoute: {component: require('./components/pages/Login')},
+    childRoutes: [
+        {
+            path: '/dashboard/overview',
+            component: require('./components/layouts/Dashboard'),
+            indexRoute: {component: require('./components/pages/dashboard/Overview')},
+            childRoutes: [
+                require('./components/pages/dashboard/Overview'),
+                require('./components/pages/dashboard/Reports')
+            ]
+        },
+        // {
+        //     path: '/login',
+        //     component: require('./components/pages/Login'),
+        //     childRoutes: []
+        // },
+        {
+            path: '/register',
+            component: require('./components/pages/SignUp'),
+            childRoutes: []
+        }
+    ]
 }
 
 render(
-  <Router history={history} routes={rootRoute} />,
-  document.getElementById('app')
+    <Router history={history} routes={rootRoute}/>,
+    document.getElementById('app')
 )
+
+export default history;
 
 // /**
 //  * App entry point
@@ -96,7 +103,7 @@ render(
 //  * @param  {[Param]} params route params
 //  *
 //  * @return {Promise}        data containing responses mapped by route name
- 
+
 // /*
 // let fetchData = function(routes, params) {
 //   let data = {};
@@ -118,7 +125,6 @@ render(
 // });
 
 
-
 // /**
 //  * App entry point
 //  */
@@ -177,7 +183,7 @@ render(
 //  * @param  {[Param]} params route params
 //  *
 //  * @return {Promise}        data containing responses mapped by route name
- 
+
 // /*
 // let fetchData = function(routes, params) {
 //   let data = {};
