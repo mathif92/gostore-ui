@@ -17,11 +17,11 @@ const rootRoute = {
     indexRoute: {component: require('./components/pages/Login')},
     childRoutes: [
         {
-            path: '/dashboard/overview',
+            path: '/dashboard/categories',
             component: require('./components/layouts/Dashboard'),
-            indexRoute: {component: require('./components/pages/dashboard/Overview')},
+            indexRoute: {component: require('./components/pages/dashboard/Categories')},
             childRoutes: [
-                require('./components/pages/dashboard/Overview'),
+                require('./components/pages/dashboard/Categories'),
                 require('./components/pages/dashboard/Reports')
             ]
         },

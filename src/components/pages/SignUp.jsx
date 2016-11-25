@@ -139,7 +139,7 @@ var SignUpPage = React.createClass({
                 $('#username').val('');
                 $('#firstAddress').val('');
                 $('#secondAddress').val('');
-                history.push('/dashboard/overview');
+                history.push('/');
             }).fail(function (jqXHR, status) {
                 console.log('failed to login');
                 return false;

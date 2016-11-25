@@ -6,7 +6,7 @@ import { Route, DefaultRoute, RouteHandler } from "react-router";
 var Base = React.createClass({
 
   componentWillMount: function(){
-    // this.props.history.pushState(null, '/dashboard/overview');
+
   },
 
   render: function() {

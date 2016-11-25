@@ -65,7 +65,7 @@ var HomePage = React.createClass({
 
                             <ul className="nav nav-sidebar">
                                 <li>
-                                    <Link to="/dashboard/overview">Overview</Link>
+                                    <Link to="/dashboard/categories">Categories</Link>
                                 </li>
                                 <li>
                                     <Link to="/dashboard/reports">Reports</Link>

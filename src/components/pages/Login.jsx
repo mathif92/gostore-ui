@@ -101,7 +101,7 @@ var LoginPage = React.createClass({
                 $('#emailOrUserName').val('');
                 $('#password').val('');
                 console.log('Login successful');
-                history.push('/dashboard/overview');
+                history.push('/dashboard/categories');
             }).fail(function (jqXHR, status) {
                 console.log('failed to login');
                 return false;

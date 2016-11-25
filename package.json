@@ -74,6 +74,7 @@
     "react-router-redux": "latest",
     "redux": "latest",
     "resource-api-utils": "^1.0.0",
+    "semantic-ui-react": "latest",
     "style-loader": "^0.12.3",
     "url-loader": "^0.5.6",
     "webpack": "^1.12.1"

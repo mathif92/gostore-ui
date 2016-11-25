@@ -4,7 +4,7 @@ import {Router, Route, DefaultRoute, RouteHandler, Redirect} from "react-router"
 import BaseLayout from "../components/layouts/Base";
 import DashboardLayout from "../components/layouts/Dashboard";
 
-import DashboardOverviewPage from "../components/pages/dashboard/Overview";
+import DashboardOverviewPage from "../components/pages/dashboard/Categories";
 import DashboardReportsPage from "../components/pages/dashboard/Reports";
 import LoginPage from "../components/pages/Login";
 import SignUpPage from "../components/pages/SignUp";
