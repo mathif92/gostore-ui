@@ -65,7 +65,7 @@ var SignUpPage = React.createClass({
                             </div>
                             <button type="submit" className="btn btn-white btn-outline btn-lg btn-rounded">Sign Up
                             </button>
-                            <Link to="/login" className="btn btn-white btn-link btn-lg">Cancel</Link>
+                            <Link to="/" className="btn btn-white btn-link btn-lg">Cancel</Link>
                         </form>
                     </div>
                 </div>

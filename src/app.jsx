@@ -17,7 +17,7 @@ const rootRoute = {
     indexRoute: {component: require('./components/pages/Login')},
     childRoutes: [
         {
-            path: '/dashboard/categories',
+            path: '/dashboard',
             component: require('./components/layouts/Dashboard'),
             indexRoute: {component: require('./components/pages/dashboard/Categories')},
             childRoutes: [

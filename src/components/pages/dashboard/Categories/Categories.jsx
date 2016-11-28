@@ -8,61 +8,55 @@ import history from "../../../../app";
 
 var Blank = React.createClass({
 
-    constructor() {
+    componentWillMount() {
         this.state = {categories: []};
-    },
+        console.log('Constructing the Categories class');
+        console.log('about to get the categories');
+        $.get('http://localhost:8080/categories').done(function (result) {
+            var categoriesJSON = $.parseJSON(result)['categories'];
+            console.log('Categories : ' + categoriesJSON);
+            var categoryList = categoriesJSON.map(function (category) {
+                return (
+                        <Item key={category['categoryId']}>
+                            <Item.Image src={category['imageUrl']}/>
 
-    componentDidMount() {
-        $.ajax({
-            type: 'GET',
-            url: 'http://localhost:8080/categories',
-            data: data
-        }).done(function (result) {
-            this.setState({categories: result.json()});
-            console.log('Categories : ' + result.json());
-        }).fail(function (jqXHR, status) {
-            console.log('failed to load the categories');
-            return false;
-        });
+                            <Item.Content>
+                                <Item.Header as='a'>{category['name']}</Item.Header>
+                                <Item.Description>{category['description']}</Item.Description>
+                                <Item.Extra>
+                                    <Button primary floated='right' onClick={this.handleCategorySelection}>
+                                        Ver Productos
+                                    </Button>
+                                    {/*<Label>Limited</Label>*/}
+                                </Item.Extra>
+                            </Item.Content>
+                        </Item>
+                );
+            }, this);
+            this.setState({categories: categoryList});
+        }.bind(this));
     },
 
     render: function () {
-        var categoryList = this.state.categories.map(function (category) {
+        if (this.state.categories.length > 0) {
             return (
-                <Item>
-                    <Item.Image src={category.imageURL}/>
+                <div className="overview-page" key="categories">
+                    <Link to="/dashboard/reports"
+                          className="pull-right btn btn-primary btn-outline btn-rounded">Reports</Link>
+                    <h2>Categorías</h2>
+                    <Jumbotron>
+                        <div>
+                            <Item.Group divided>
+                                {this.state.categories}
+                            </Item.Group>
+                        </div>
+                    </Jumbotron>
+                </div>
 
-                    <Item.Content>
-                        <Item.Header as='a'>{category.name}</Item.Header>
-                        <Item.Meta>
-                            <span className='cinema'>IFC Cinema</span>
-                        </Item.Meta>
-                        <Item.Description>{category.description}</Item.Description>
-                        <Item.Extra>
-                            <Button primary floated='right' onClick={this.handleCategorySelection}>
-                                Ver Productos
-                                <Icon name='right chevron'/>
-                            </Button>
-                            {/*<Label>Limited</Label>*/}
-                        </Item.Extra>
-                    </Item.Content>
-                </Item>
+
             );
-        });
-        return (
-            <div className="overview-page" key="overview">
-                <Link to="/dashboard/reports"
-                      className="pull-right btn btn-primary btn-outline btn-rounded">Reports</Link>
-                <h2>Categorías
-                    <small>Selecciona "Ver Productos" para ver los productos de una categoría</small>
-                </h2>
-                <Jumbotron>
-                    <p><a className="btn btn-primary btn-lg btn-outline btn-rounded">{categoryList}</a></p>
-                </Jumbotron>
-            </div>
-
-
-        );
+        }
+        return (<div></div>)
     },
 
     handleCategorySelection: function () {

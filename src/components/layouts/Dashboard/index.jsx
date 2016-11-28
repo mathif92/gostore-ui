@@ -34,7 +34,9 @@ var HomePage = React.createClass({
     },
 
     contextTypes: {
-        router: React.PropTypes.func
+        router: function () {
+            React.PropTypes.func
+        }
     },
 
     render: function () {
@@ -55,33 +57,20 @@ var HomePage = React.createClass({
                     <div className="row">
                         <div className="col-sm-3 col-md-2 sidebar">
                             <div className="text-center">
-                                <h2 className="brand">Go Store <br />
-                                    <small>Buy all the products you want here</small>
+                                <h2 className="brand">Go! <br />
+                                    <small>Donde puedes comprar lo que deseas</small>
                                 </h2>
                                 <img src={require("../../../common/images/flat-avatar.png")} className="user-avatar"/>
                                 <br />
-                                <Link to="/" className="btn btn-white btn-outline btn-rounded btn-sm">Logout</Link>
+                                <Link to="/" className="btn btn-white btn-outline btn-rounded btn-sm">Salir</Link>
                             </div>
 
                             <ul className="nav nav-sidebar">
                                 <li>
-                                    <Link to="/dashboard/categories">Categories</Link>
+                                    <Link to="/dashboard/categories">Categorías</Link>
                                 </li>
                                 <li>
                                     <Link to="/dashboard/reports">Reports</Link>
-                                </li>
-                                <li>
-                                    <a href="http://startangular.com/product/ani-theme/">Free Angular version</a>
-                                </li>
-                                <li>
-                                    <a href="http://www.strapui.com/ani-reactjs-theme">Premium React.js Edition</a>
-                                </li>
-                                <li>
-                                    <a href="http://www.strapui.com/ani-angularjs-theme">Premium AngularJS Edition</a>
-                                </li>
-                                <li>
-                                    <a href="http://www.strapui.com/themes/ani-laravel-theme/">Premium Laravel
-                                        Edition</a>
                                 </li>
                             </ul>
                         </div>

@@ -3,6 +3,7 @@ import Router, {Link, RouteHandler, Navigation} from 'react-router';
 import {Panel, Input, Button} from 'react-bootstrap';
 import {History} from 'history';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import {Button as Btn} from 'semantic-ui-react';
 import $ from "jquery";
 import {browserHistory} from 'react-router';
 import history from "../../app";
@@ -29,22 +30,22 @@ var LoginPage = React.createClass({
             <div className="login-page ng-scope ui-view">
                 <div className="row">
                     <div className="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
-                        <img src={require("../../common/images/flat-avatar.png")} className="user-avatar"/>
-                        <h1>Sign in Go Store</h1>
+                        <img src={require("../../common/images/go.png")} className="logo-login"/>
+                        <h1>Inicia sesion en Go!</h1>
                         <form role="form" onSubmit={this.handleLogin} className="ng-pristine ng-valid">
                             <div className="form-content">
                                 <div className="form-group">
                                     <input type="text" className="form-control input-underline input-lg"
-                                           placeholder="Email or User Name" id="emailOrUserName"/>
+                                           placeholder="Email o nick" id="emailOrUserName"/>
                                 </div>
                                 <div className="form-group">
                                     <input type="password" className="form-control input-underline input-lg"
                                            placeholder="Password" id="password"/>
                                 </div>
                             </div>
-                            <button type="submit" className="btn btn-white btn-outline btn-lg btn-rounded">Login
-                            </button>
-                            <Link to="/register" className="btn btn-white btn-link btn-lg">Sign Up</Link>
+                            <Btn type="submit" color="blue" size="big" circular="true">Iniciar Sesion
+                            </Btn>
+                            <Link to="/register" className="btn btn-white btn-link btn-lg">Registrarse</Link>
                         </form>
                     </div>
                 </div>
