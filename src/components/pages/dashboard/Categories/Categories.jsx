@@ -3,7 +3,9 @@ import {Link} from "react-router";
 import {Jumbotron} from 'react-bootstrap';
 import $ from "jquery";
 import {Button, Icon, Image as ImageComponent, Dimmer, Loader, Item, Label} from 'semantic-ui-react'
+
 import history from "../../../../app";
+import Products from "../Products/Products";
 
 
 var Blank = React.createClass({
@@ -14,7 +16,7 @@ var Blank = React.createClass({
         console.log('about to get the categories');
         $.get('http://localhost:8080/categories').done(function (result) {
             var categoriesJSON = $.parseJSON(result)['categories'];
-            console.log('Categories : ' + categoriesJSON);
+            console.log('Categories : ' + JSON.stringify(categoriesJSON));
             var categoryList = categoriesJSON.map(function (category) {
                 return (
                         <Item key={category['categoryId']}>
@@ -24,7 +26,7 @@ var Blank = React.createClass({
                                 <Item.Header as='a'>{category['name']}</Item.Header>
                                 <Item.Description>{category['description']}</Item.Description>
                                 <Item.Extra>
-                                    <Button primary floated='right' onClick={this.handleCategorySelection}>
+                                    <Button primary floated='right' onClick={() => this.handleCategorySelection(category['categoryId'])}>
                                         Ver Productos
                                     </Button>
                                     {/*<Label>Limited</Label>*/}
@@ -41,8 +43,6 @@ var Blank = React.createClass({
         if (this.state.categories.length > 0) {
             return (
                 <div className="overview-page" key="categories">
-                    <Link to="/dashboard/reports"
-                          className="pull-right btn btn-primary btn-outline btn-rounded">Reports</Link>
                     <h2>Categorías</h2>
                     <Jumbotron>
                         <div>
@@ -59,8 +59,13 @@ var Blank = React.createClass({
         return (<div></div>)
     },
 
-    handleCategorySelection: function () {
-
+    handleCategorySelection: function (categoryId) {
+        history.push({
+            pathname: '/dashboard/products',
+            state: {
+                categoryId : categoryId, productList : []
+            }
+        });
     }
 
 });

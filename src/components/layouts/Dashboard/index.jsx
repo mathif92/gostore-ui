@@ -69,9 +69,6 @@ var HomePage = React.createClass({
                                 <li>
                                     <Link to="/dashboard/categories">Categorías</Link>
                                 </li>
-                                <li>
-                                    <Link to="/dashboard/reports">Reports</Link>
-                                </li>
                             </ul>
                         </div>
 
